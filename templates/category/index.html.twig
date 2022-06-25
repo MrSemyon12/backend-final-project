@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Записи не найдены!</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

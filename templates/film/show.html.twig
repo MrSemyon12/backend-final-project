@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Фильм{% endblock %}
+
+{% block body %}
+    <h1>Фильм</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>ID</th>
+            <td>{{ film.getId() }}</td>
+        </tr>
+        <tr>
+            <th>Название</th>
+            <td>{{ film.getTitle() }}</td>
+        </tr>
+        <tr>
+            <th>Постер</th>
+            <td><img src="{{ film.getImageurl() }}" width="300" height="450" alt="не найдена"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_film_index') }}">Назад</a>
+{% endblock %}

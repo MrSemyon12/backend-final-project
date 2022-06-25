@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Постер</th>
+        <th>Категория</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for film in films %}
+        <tr>
+            <td>{{ film.id }}</td>
+            <td>{{ film.title }}</td>
+            <td><img src="{{ film.imageurl }}" width="100" height="150" alt="не найдена"></td>
+            <td>{{ film.getCategoryName() }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">Записи не найдены!</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
