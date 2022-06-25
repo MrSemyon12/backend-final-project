@@ -55,4 +55,36 @@ class FilmController extends AbstractController
             'film' => $film,
         ]);
     }
+
+    /**
+     * @Route("/{id}/edit", name="app_film_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Film $film, FilmRepository $filmRepository): Response
+    {
+        $form = $this->createForm(AddFilmType::class, $film);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $filmRepository->add($film, true);
+
+            return $this->redirectToRoute('app_film_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('film/edit.html.twig', [
+            'film' => $film,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="app_film_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Film $film, FilmRepository $filmRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$film->getId(), $request->request->get('_token'))) {
+            $filmRepository->remove($film, true);
+        }
+
+        return $this->redirectToRoute('app_film_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

@@ -5,10 +5,5 @@
 {% block body %}
     <a href="/filmoteka/film">Фильмы</a>
     <a href="/filmoteka/category">Категории</a>
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="/filmoteka/favourite">Избранное</a>
-        <a href="{{ path('app_film_add') }}">Добавить фильм</a><br>
-        <a href="{{ path('app_category_add') }}">Добавить категорию</a><br>
-        <a href="{{ path('app_favourite_add') }}">Добавить в избранное</a><br>
-    {% endif %}
+    <a href="/filmoteka/favourite">Избранное</a>
 {% endblock %}

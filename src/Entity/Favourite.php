@@ -15,37 +15,37 @@ class Favourite
 
     #[ORM\ManyToOne(targetEntity: Film::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $film_id;
+    private $film;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private $user_username;
+    private $user;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getFilmId(): ?Film
+    public function getFilm(): ?Film
     {
-        return $this->film_id;
+        return $this->film;
     }
 
-    public function setFilmId(?Film $film_id): self
+    public function setFilm(?Film $film): self
     {
-        $this->film_id = $film_id;
+        $this->film = $film;
 
         return $this;
     }
 
-    public function getUserUsername(): ?User
+    public function getUser(): ?User
     {
-        return $this->user_username;
+        return $this->user;
     }
 
-    public function setUserUsername(?User $user_username): self
+    public function setUser(?User $user): self
     {
-        $this->user_username = $user_username;
+        $this->user = $user;
 
         return $this;
     }

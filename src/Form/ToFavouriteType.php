@@ -12,8 +12,8 @@ class ToFavouriteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('film_id')
-            ->add('user_username')
+            ->add('film')
+            ->add('user')
         ;
     }
 

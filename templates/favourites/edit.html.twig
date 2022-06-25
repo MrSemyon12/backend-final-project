@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать{% endblock %}
+
+{% block body %}
+    <h1>Редактировать избранное</h1>
+
+    {{ include('favourites/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_favourite_index') }}">Вернуться</a>
+
+    {{ include('favourites/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('app_film_add') }}">Добавить фильм</a><br>
+{% endif %}    
 <table>
     <thead>
     <tr>
@@ -16,6 +19,12 @@
             <td>{{ film.title }}</td>
             <td><img src="{{ film.imageurl }}" width="100" height="150" alt="не найдена"></td>
             <td>{{ film.getCategoryName() }}</td>
+            <td>
+                <a href="{{ path('app_film_show', {'id': film.id}) }}">Показать</a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('app_film_edit', {'id': film.id}) }}">Редактировать</a>
+                {% endif %}
+            </td>
         </tr>
     {% else %}
         <tr>

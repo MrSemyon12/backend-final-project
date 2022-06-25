@@ -1,25 +1,33 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <table>
-        <thead>
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('app_favourite_add') }}">Добавить в избранное</a><br>
+{% endif %}
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Пользователь</th>
+        <th>Фильм</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for favourite in favourites %}
         <tr>
-            <th>ID</th>
-            <th>Пользователь</th>
-            <th>Фильм</th>
+            <td>{{ favourite.getId() }}</td>
+            <td>{{ favourite.getUser().getUsername() }}</td>
+            <td>{{ favourite.getFilm().getTitle() }}</td>
+            <td>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('app_favourite_edit', { 'id': favourite.getId() }) }}">Редактировать</a>
+                {% endif %}
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        {% for favourite in favourites %}
-            <tr>
-                <td>{{ favourite.getId() }}</td>
-                <td>{{ favourite.getUserUsername().getUsername() }}</td>
-                <td>{{ favourite.getFilmId().getTitle() }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">Записи не найдены!</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% else %}
+        <tr>
+            <td colspan="3">Записи не найдены!</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
