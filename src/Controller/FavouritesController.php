@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Favourite;
-use App\Form\ToFavouriteType;
+use App\Form\FavouriteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\FavouriteRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class FavouritesController extends AbstractController
     public function add(Request $request, FavouriteRepository $favouriteRepository): Response
     {
         $favourite = new Favourite();
-        $form = $this->createForm(ToFavouriteType::class, $favourite);
+        $form = $this->createForm(FavouriteType::class, $favourite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class FavouritesController extends AbstractController
      */
     public function edit(Request $request, Favourite $favourite, FavouriteRepository $favouriteRepository): Response
     {
-        $form = $this->createForm(ToFavouriteType::class, $favourite);
+        $form = $this->createForm(FavouriteType::class, $favourite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

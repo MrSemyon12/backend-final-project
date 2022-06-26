@@ -13,7 +13,7 @@ class Director
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 40)]
     private $name;
 
     public function getId(): ?int
@@ -31,5 +31,10 @@ class Director
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

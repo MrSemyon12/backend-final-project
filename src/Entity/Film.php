@@ -16,12 +16,16 @@ class Film
     #[ORM\Column(type: 'string', length: 40)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $imageurl;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
-    private $category_name;
+    private $category;
+
+    #[ORM\ManyToOne(targetEntity: Director::class)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
+    private $director;
 
     public function getId(): ?int
     {
@@ -45,21 +49,33 @@ class Film
         return $this->imageurl;
     }
 
-    public function setImageurl(?string $imageurl): self
+    public function setImageurl(string $imageurl): self
     {
         $this->imageurl = $imageurl;
 
         return $this;
     }
 
-    public function getCategoryName(): ?Category
+    public function getCategory(): ?Category
     {
-        return $this->category_name;
+        return $this->category;
     }
 
-    public function setCategoryName(?Category $category_name): self
+    public function setCategory(?Category $category): self
     {
-        $this->category_name = $category_name;
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDirector(): ?Director
+    {
+        return $this->director;
+    }
+
+    public function setDirector(?Director $director): self
+    {
+        $this->director = $director;
 
         return $this;
     }

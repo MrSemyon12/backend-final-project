@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Film;
-use App\Form\AddFilmType;
+use App\Form\FilmType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\FilmRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class FilmController extends AbstractController
     public function add(Request $request, FilmRepository $filmRepository): Response
     {
         $film = new Film();
-        $form = $this->createForm(AddFilmType::class, $film);
+        $form = $this->createForm(FilmType::class, $film);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,7 +61,7 @@ class FilmController extends AbstractController
      */
     public function edit(Request $request, Film $film, FilmRepository $filmRepository): Response
     {
-        $form = $this->createForm(AddFilmType::class, $film);
+        $form = $this->createForm(FilmType::class, $film);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

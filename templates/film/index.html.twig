@@ -9,6 +9,7 @@
         <th>ID</th>
         <th>Название</th>
         <th>Постер</th>
+        <th>Режиссер</th>
         <th>Категория</th>
     </tr>
     </thead>
@@ -18,7 +19,8 @@
             <td>{{ film.id }}</td>
             <td>{{ film.title }}</td>
             <td><img src="{{ film.imageurl }}" width="100" height="150" alt="не найдена"></td>
-            <td>{{ film.getCategoryName() }}</td>
+            <td>{{ film.getDirector() }}</td>
+            <td>{{ film.getCategory() }}</td>
             <td>
                 <a href="{{ path('app_film_show', {'id': film.id}) }}">Показать</a>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}

@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Form\AddCategoryType;
+use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +30,7 @@ class CategoryController extends AbstractController
     public function add(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
-        $form = $this->createForm(AddCategoryType::class, $category);
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
