@@ -1,5 +1,5 @@
 
-<a href="/">Главная</a>
+<a href="/">Схема</a>
 {% if app.request.get('_route') != 'app_login' and app.request.get('_route') != 'app_register' %}
     <a href="/filmoteka">Фильмотека</a>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
