@@ -20,7 +20,7 @@ class Film
     private $imageurl;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     private $category_name;
 
     public function getId(): ?int

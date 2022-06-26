@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать{% endblock %}
+
+{% block body %}
+    <h1>Редактировать режиссера</h1>
+
+    {{ include('director/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_director_index') }}">Вернуться</a>
+
+    {{ include('director/_delete_form.html.twig') }}
+{% endblock %}

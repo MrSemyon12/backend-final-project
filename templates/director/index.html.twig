@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_director_add') }}">Добавить режиссера</a><br>
+    {% endif %}
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Режиссер</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for director in directors %}
+            <tr>
+                <td>{{ director.id }}</td>
+                <td>{{ director.name }}</td>
+                <td>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('app_director_edit', {'id': director.id}) }}">Редактировать</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записи не найдены!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
